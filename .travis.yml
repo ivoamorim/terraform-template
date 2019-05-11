@@ -19,7 +19,7 @@ script:
 - terraform fmt -check=true
 - cd providers/${PROVIDER}/${ENVIRONMENT}
 - terraform init
-- terraform plan -var-file ${ENVIRONMENT}.tfvars
+#- terraform plan -var-file ${ENVIRONMENT}.tfvars
 
 notifications:
   email: false
