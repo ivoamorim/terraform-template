@@ -1,0 +1,25 @@
+---
+language: generic
+env:
+  global:
+    - TERRAFORM_VERSION=0.11.13
+    - PROVIDER=aws
+    - ENVIRONMENT=integration
+
+install:
+- echo "install"
+- export TF_WARN_OUTPUT_ERRORS=1
+- curl --silent --output terraform.zip https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+- unzip terraform.zip ; rm -f terraform.zip; chmod +x terraform
+- mkdir -p ${HOME}/bin ; export PATH=${PATH}:${HOME}/bin; mv terraform ${HOME}/bin/
+- terraform version
+
+script:
+- echo 'script'
+- terraform fmt -check=true
+- cd providers/${PROVIDER}/${ENVIRONMENT}
+- terraform init
+- terraform plan -var-file ${ENVIRONMENT}.tfvars
+
+notifications:
+  email: false
