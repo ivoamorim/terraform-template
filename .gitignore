@@ -1,4 +1,7 @@
+# MacOS General
 .DS_Store
+.AppleDouble
+.LSOverride
 
 # Local .terraform directories
 **/.terraform/*
