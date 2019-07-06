@@ -2,7 +2,7 @@ region = "us-east-2"
 
 project = "3TierArchitecture"
 
-environment = "Integration"
+environment = "Devel"
 
 vpc_cidr = "192.168.0.0/23"
 
